@@ -5,7 +5,6 @@ import static commons.Config.BY;
 import static commons.Config.STATUS;
 
 import java.util.UUID;
-import java.util.logging.Logger;
 
 import commons.Config;
 import io.vertx.core.AbstractVerticle;
@@ -13,13 +12,16 @@ import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.logging.Logger;
+import io.vertx.core.logging.LoggerFactory;
+import io.vertx.core.shareddata.Lock;
 
 /**
  * Death Eaters monitor who is using the taboo name
  */
 public class DeathEater extends AbstractVerticle {
 
-   private final Logger logger = Logger.getLogger(DeathEater.class.getName());
+   private final Logger logger = LoggerFactory.getLogger(DeathEater.class);
    private boolean isCastingAWizard = false;
    private String id = UUID.randomUUID().toString().substring(0, 4).toUpperCase() + "_DE";
 
@@ -41,7 +43,7 @@ public class DeathEater extends AbstractVerticle {
          logger.info(">> cast started to " + wizard);
 
          vertx.setTimer(3000, h -> {
-            vertx.eventBus().send(ADAVA_KEDAVRA_ADDRESS, endRebootMessage());
+            vertx.eventBus().send(ADAVA_KEDAVRA_ADDRESS, endRebootMessage(wizard));
             logger.info("<< cast over " + wizard);
             isCastingAWizard = false;
          });
@@ -50,14 +52,14 @@ public class DeathEater extends AbstractVerticle {
 
    private JsonObject startRebootMessage(String wizard) {
       JsonObject message = new JsonObject();
-      message.put(STATUS, "Cast " + wizard);
+      message.put(STATUS, "is CASTING " + wizard);
       message.put(BY, id);
       return message;
    }
 
-   private JsonObject endRebootMessage() {
+   private JsonObject endRebootMessage(String wizard) {
       JsonObject message = new JsonObject();
-      message.put(STATUS, "Coming back");
+      message.put(STATUS, "is BACK FROM casting " + wizard);
       message.put(BY, id);
       return message;
    }

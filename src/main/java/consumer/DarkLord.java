@@ -4,27 +4,27 @@ import static commons.Config.ADAVA_KEDAVRA_ADDRESS;
 import static commons.Config.BY;
 import static commons.Config.STATUS;
 
-import java.util.logging.Logger;
-
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.logging.Logger;
+import io.vertx.core.logging.LoggerFactory;
 
 /**
  * The Dark Lord is watching ...
  */
 public class DarkLord extends AbstractVerticle {
 
-   private final Logger logger = Logger.getLogger(DarkLord.class.getName());
+   private final Logger logger = LoggerFactory.getLogger(DarkLord.class);
 
    @Override
    public void start(Future<Void> startFuture) {
       logger.info("The Dark Lord is watching...");
       vertx.eventBus().<JsonObject>consumer(ADAVA_KEDAVRA_ADDRESS, message -> {
          JsonObject reboot = message.body();
-         logger.info(("Status " + reboot.getString(STATUS) + " by " + reboot.getString(BY)));
+         logger.info(String.format("%s %s", reboot.getString(BY), reboot.getString(STATUS)));
       });
       startFuture.complete();
    }
