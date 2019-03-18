@@ -1,0 +1,7 @@
+.idea
+/vertx-api.iml
+/*/*.iml
+/*/.vertx/
+target/
+/*/node_modules/
+/*/npm-debug.log
