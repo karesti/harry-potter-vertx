@@ -8,16 +8,16 @@ Wizards who dare saying the taboo name and being tracked!
 
 #### Death Eater
 
-Consumes the messages from the event bus "NAMED" address.
+Consumes messages from the event bus "NAMED" address.
 
 The Death Eater will be able to go instantly where the Wizard has said the taboo name. 
-That's how the Cursed Taboo name works, and that's why you should say "You-Know-Who" or 
-"He-Who-Must-Not-Be-Named" or "Dark Lord" if you are a Death Eater. You chose your side, no judgement!
+That's how the Cursed Taboo name works, and that's why you should say "You-Know-Who", 
+"He-Who-Must-Not-Be-Named" or "Dark Lord" (if you are a Death Eater). You chose your side, no judgement!
 
 The Death Eater will use the killing curse against the Wizard and come back to report.
 A Death Eater can't start a killing curse if it's already doing one!
 
-#### Dark Lord
+#### Dark Lord - Monitoring
 
 Consumes monitoring messages from the event bus "ADAVA_KEDAVRA" address and logs them.
 The Dark Lord wants to check that Death Eaters are working well.
