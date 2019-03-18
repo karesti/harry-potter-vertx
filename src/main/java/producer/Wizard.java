@@ -2,6 +2,7 @@ package producer;
 
 import static commons.Config.NAMED_ADDRESS;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
@@ -18,7 +19,7 @@ public class Wizard extends AbstractVerticle {
 
    private final Logger logger = Logger.getLogger(Wizard.class.getName());
 
-   private final List<String> WIZARDS = List.of("Alice Longbottom", "Albus Dumbledore", "James Potter");
+   private final List<String> WIZARDS = Arrays.asList("Alice Longbottom", "Albus Dumbledore", "James Potter");
 
    @Override
    public void start(Future<Void> startFuture) {
