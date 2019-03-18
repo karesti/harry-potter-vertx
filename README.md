@@ -2,11 +2,11 @@
 
 ![Clustered Vert.x example](img/taboo-name-curse.png)
 
-#### Wizard
+### Wizard
 
-Wizards who dare saying the taboo name and being tracked!
+Wizards who dare saying the taboo name are being tracked!
 
-#### Death Eater
+### Death Eater
 
 Consumes messages from the event bus "NAMED" address.
 
@@ -17,7 +17,7 @@ That's how the Cursed Taboo name works, and that's why you should say "You-Know-
 The Death Eater will use the killing curse against the Wizard and come back to report.
 A Death Eater can't start a killing curse if it's already doing one!
 
-#### Dark Lord - Monitoring
+### Dark Lord - Monitoring
 
 Consumes monitoring messages from the event bus "ADAVA_KEDAVRA" address and logs them.
 The Dark Lord wants to check that Death Eaters are working well.
