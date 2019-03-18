@@ -14,6 +14,9 @@ import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
 import io.vertx.core.json.JsonObject;
 
+/**
+ * Death Eaters monitor who is using the taboo name
+ */
 public class DeathEater extends AbstractVerticle {
 
    private final Logger logger = Logger.getLogger(DeathEater.class.getName());
@@ -23,7 +26,7 @@ public class DeathEater extends AbstractVerticle {
    @Override
    public void start(Future<Void> startFuture) {
       logger.info("Death Eater verticle " + id + " started");
-      vertx.eventBus().<String>consumer(Config.NAMED, message -> {
+      vertx.eventBus().<String>consumer(Config.NAMED_ADDRESS, message -> {
          String wizardName = message.body();
          launchReboot(wizardName);
       });

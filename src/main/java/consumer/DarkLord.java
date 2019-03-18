@@ -12,6 +12,9 @@ import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
 import io.vertx.core.json.JsonObject;
 
+/**
+ * The Dark Lord is watching ...
+ */
 public class DarkLord extends AbstractVerticle {
 
    private final Logger logger = Logger.getLogger(DarkLord.class.getName());

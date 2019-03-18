@@ -1,6 +1,6 @@
 package producer;
 
-import static commons.Config.NAMED;
+import static commons.Config.NAMED_ADDRESS;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,6 +11,9 @@ import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
 
+/**
+ * Wizards daring to say the taboo name are being tracked by the curse
+ */
 public class Wizard extends AbstractVerticle {
 
    private final Logger logger = Logger.getLogger(Wizard.class.getName());
@@ -25,7 +28,7 @@ public class Wizard extends AbstractVerticle {
          int randomWizard = ThreadLocalRandom.current().nextInt(WIZARDS.size());
          String wizard = WIZARDS.get(randomWizard);
          logger.info(String.format("Wizard %s has said Voldemort", wizard));
-         vertx.eventBus().send(NAMED, wizard);
+         vertx.eventBus().send(NAMED_ADDRESS, wizard);
       });
       startFuture.complete();
    }
