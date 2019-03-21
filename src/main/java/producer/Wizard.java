@@ -20,7 +20,7 @@ public class Wizard extends AbstractVerticle {
 
    private final Logger logger = LoggerFactory.getLogger(Wizard.class);
 
-   private final List<String> WIZARDS = Arrays.asList("Alice Longbottom", "Albus Dumbledore", "James Potter");
+   private final List<String> WIZARDS = Arrays.asList("Neville Longbottom", "Hermione Granger", "Ron Wesley");
 
    @Override
    public void start(Future<Void> startFuture) {
@@ -28,7 +28,7 @@ public class Wizard extends AbstractVerticle {
       vertx.setPeriodic(1000, x -> {
          int randomWizard = ThreadLocalRandom.current().nextInt(WIZARDS.size());
          String wizard = WIZARDS.get(randomWizard);
-         logger.info(String.format("Wizard %s has said Voldemort", wizard));
+         logger.info(String.format("Wizard ** %s ** has said Voldemort", wizard));
          vertx.eventBus().send(NAMED_ADDRESS, wizard);
       });
       startFuture.complete();
